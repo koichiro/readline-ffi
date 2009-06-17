@@ -1,0 +1,7 @@
+= Readline-ffi
+
+GNU Readline Wrapper for Ruby-FFI(JRuby-FFI/Rubinus-FFI/Ruby-FFI).
+
+standart Ruby Readline extention intaerface compatiblity.
+
+
