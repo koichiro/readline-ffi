@@ -7,12 +7,22 @@ module FFI::Readline
   paths = %w[
     /opt/local/lib/libreadline.dylib
     /usr/lib/libreadline.dylib
+    /usr/local/lib/libreadline.dylib
     /usr/lib/libreadline.so
     /lib/libreadline.so
     /lib/libreadline.so.5
   ]
   paths << File.expand_path(File.dirname(__FILE__) + "/../../ext/readline.dll")
-  ffi_lib paths.find { |path| File.exist?(path)}
+  paths.find do |path|
+    if File.exist?(path)
+      begin
+        ffi_lib path
+        true
+      rescue LoadError
+        false
+      end
+    end
+  end
   ffi_convention(CONVENTION)
 
   attach_function :readline, [:string], :string
