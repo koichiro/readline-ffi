@@ -37,7 +37,7 @@ module Readline
 #      puts state
 #      p = FFI::Readline.filename_completion_function(word_p, state)
 #      nil
-#      p = MemoryPointer.new :pointer
+#      p = ::FFI::MemoryPointer.new :pointer
 #      p.put_string("hoge")
 #      p
 #      nil
@@ -55,7 +55,7 @@ module Readline
 
   # Readline initialize
   private
-  FFI::Readline.readline_name = MemoryPointer.from_string("Ruby")
+  FFI::Readline.readline_name = ::FFI::MemoryPointer.from_string("Ruby")
   @completion_proc = nil
   @completion_case_fold = nil
 
@@ -70,10 +70,10 @@ module Readline
 
     candidates = proc.call(text)
     return nil if candidates.empty?
-    result = MemoryPointer.new :pointer, candidates.length + 1
+    result = ::FFI::MemoryPointer.new :pointer, candidates.length + 1
     i = 0
     candidates.each do |word|
-      result[i].put_pointer(0, MemoryPointer.from_string(word))
+      result[i].put_pointer(0, ::FFI::MemoryPointer.from_string(word))
       i += 1
       puts word
     end 
@@ -195,7 +195,7 @@ module Readline
 
   def self.basic_word_break_characters=(str)
     return nil unless str
-    FFI::Readline.basic_word_break_characters = MemoryPointer.from_string(str)
+    FFI::Readline.basic_word_break_characters = ::FFI::MemoryPointer.from_string(str)
   end
 
   def self.basic_word_break_characters
@@ -219,7 +219,7 @@ module Readline
 
   def self.completer_word_break_characters=(str)
     return nil unless str
-    FFI::Readline.completer_word_break_characters = MemoryPointer.from_string(str)
+    FFI::Readline.completer_word_break_characters = ::FFI::MemoryPointer.from_string(str)
   end
 
   def self.completer_word_break_characters
@@ -229,7 +229,7 @@ module Readline
 
   def self.basic_quote_characters=(str)
     return nil unless str
-    FFI::Readline.basic_quote_characters = MemoryPointer.from_string(str)
+    FFI::Readline.basic_quote_characters = ::FFI::MemoryPointer.from_string(str)
     HISTORY
   end
 
@@ -240,7 +240,7 @@ module Readline
 
   def self.completer_quote_characters=(str)
     return nil unless str
-    FFI::Readline.completer_quote_characters = MemoryPointer.from_string(str)
+    FFI::Readline.completer_quote_characters = ::FFI::MemoryPointer.from_string(str)
   end
 
   def self.completer_quote_characters
@@ -250,7 +250,7 @@ module Readline
 
   def self.filename_quote_characters=(str)
     return nil unless str
-    FFI::Readline.completer_quote_characters = MemoryPointer.from_string(str)
+    FFI::Readline.completer_quote_characters = ::FFI::MemoryPointer.from_string(str)
   end
 
   def self.filename_quote_characters
