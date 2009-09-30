@@ -5,9 +5,9 @@ module FFI::Readline
   CONVENTION = FFI::Platform.windows? ? :stdcall : :default
 
   paths = %w[
+    /usr/local/lib/libreadline.dylib
     /opt/local/lib/libreadline.dylib
     /usr/lib/libreadline.dylib
-    /usr/local/lib/libreadline.dylib
     /usr/lib/libreadline.so
     /lib/libreadline.so
     /lib/libreadline.so.5
