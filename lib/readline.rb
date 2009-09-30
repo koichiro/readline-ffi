@@ -276,7 +276,7 @@ module Readline
   end
 
   def self.vi_editing_mode
-    FFI::Readline.editing_mode = 2
+    FFI::Readline.editing_mode = 0
     nil
   end
 
