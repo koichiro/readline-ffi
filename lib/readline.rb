@@ -71,16 +71,15 @@ module Readline
 
     candidates = proc.call(text)
     return nil if candidates.empty?
-    result = ::FFI::MemoryPointer.new :pointer, candidates.length + 1
-    i = 0
-    candidates.each do |word|
-      result[i].put_pointer(0, ::FFI::MemoryPointer.from_string(word))
-      i += 1
-      puts word
-    end 
-    result[i].put_pointer(0, nil)
 
-    result.address
+    result_size = candidates.length + 1
+    result = ::FFI::MemoryPointer.new :pointer, result_size
+    candidates.each_with_index do |word, i|
+      result[i].put_pointer(0, ::FFI::MemoryPointer.from_string(word))
+    end
+    result[result_size - 1].put_pointer(0, nil)
+
+    result
   end
   FFI::Readline.attempted_completion_function = ATTEMPTED_COMPLETION_PROC
 
