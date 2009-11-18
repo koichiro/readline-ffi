@@ -1,3 +1,4 @@
+puts 'ffi'
 #
 # Version: CPL 1.0/GPL 2.0/LGPL 2.1
 #
@@ -64,7 +65,7 @@ module Readline
     p.null? ? nil : p.read_string
   end
 
-  ATTEMPTED_COMPLETION_PROC = Proc.new do |text, start, last|
+  ATTEMPTED_COMPLETION_PROC = lambda do |text, start, last|
     proc = @completion_proc
     return nil unless proc
 
