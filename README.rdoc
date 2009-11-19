@@ -2,6 +2,8 @@
 
 GNU Readline Wrapper for Ruby-FFI(JRuby-FFI/Rubinus-FFI/Ruby-FFI).
 
-standart Ruby Readline extention intaerface compatiblity.
+CRuby's Readline extention intaerface compatiblity.
 
+tested only JRuby Windows environment.
 
+I hope supoorts environments to Mac OSX and Linux.
