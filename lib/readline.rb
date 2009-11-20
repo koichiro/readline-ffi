@@ -1,4 +1,3 @@
-puts 'ffi'
 #
 # Version: CPL 1.0/GPL 2.0/LGPL 2.1
 #
