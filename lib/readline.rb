@@ -26,6 +26,7 @@
 # the terms of any one of the CPL, the GPL or the LGPL.
 
 require 'ffi/readline'
+require 'readeline-ffi/version'
 
 module Readline
 
@@ -83,7 +84,7 @@ module Readline
   FFI::Readline.attempted_completion_function = ATTEMPTED_COMPLETION_PROC
 
   public
-  VERSION = "#{library_version} (FFI wrapper 0.0.1)"
+  VERSION = "#{library_version} (FFI wrapper #{ReadelineFFI::VERSION})"
 
   def readline( prompt = "", history = nil)
     raise TypeError unless STDIN.kind_of? IO
